@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste</title>
+</head>
+<body>
+    
+
+    <script>
+        xml = new XMLHttpRequest();
+        xml.open("post", "http://localhost/api/index.php");
+        //xml.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+        xml.setRequestHeader('Content-Type','application/json');
+
+        let data = "name=Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.&age=38"
+
+        let data2 = [{"name":"paulo","age":38},{"name":"marco","age":33}]
+        let xpto = JSON.stringify(data2);
+        console.log(xpto)
+        xml.send(xpto);
+
+
+        let asdf = [];
+        xml.addEventListener("load",function(){
+            let pena = JSON.parse(xml.responseText)
+            document.write(pena.name)
+            asdf.push(JSON.parse(xml.responseText));
+        })
+
+        console.log(asdf)
+        console.log(asdf[0])
+
+        let banana = [{"name":"pera","validade":"3 meses"}];
+        console.log(banana)
+        console.log(banana[0])
+    </script>
+</body>
+</html>
